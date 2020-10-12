@@ -1,3 +1,7 @@
+## Still in development...
+
+Live dev version at [shop.m-m.codes](https://shop.m-m.codes/)
+
 ##E-commerce application
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
