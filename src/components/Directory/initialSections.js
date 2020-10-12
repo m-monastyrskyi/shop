@@ -18,17 +18,17 @@ export const initialSections = [
         linkUrl: 'shop/sneakers'
     },
     {
-        title: 'womens',
+        title: 'girls',
         imageUrl: '/assets/girl.jpg',
         size: 'large',
         id: 4,
-        linkUrl: 'shop/womens'
+        linkUrl: 'shop/girls'
     },
     {
-        title: 'mens',
+        title: 'boys',
         imageUrl: '/assets/guy.jpg',
         size: 'large',
         id: 5,
-        linkUrl: 'shop/mens'
+        linkUrl: 'shop/boys'
     }
 ];
