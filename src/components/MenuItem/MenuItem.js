@@ -1,9 +1,10 @@
 import React from 'react';
 import "./MenuItem.styles.scss"
+import {Link} from "react-router-dom";
 
-const MenuItem = ({title, imageUrl, size}) => {
+const MenuItem = ({title, imageUrl, linkUrl, size}) => {
     return (
-        <div className={`menu-item ${size}`}>
+        <Link to={linkUrl} className={`menu-item ${size}`}>
             <div className="background-image" style={{
                 backgroundImage: `url(${imageUrl})`
             }}/>
@@ -11,7 +12,7 @@ const MenuItem = ({title, imageUrl, size}) => {
                 <h1 className="title">{title}</h1>
                 <span className="subtitle">SHOP NOW</span>
             </div>
-        </div>
+        </Link>
     );
 };
 
