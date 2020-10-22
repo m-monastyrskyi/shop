@@ -31,4 +31,4 @@ export const initialSections = [
         id: 5,
         linkUrl: 'shop/boys'
     }
-];
+]
