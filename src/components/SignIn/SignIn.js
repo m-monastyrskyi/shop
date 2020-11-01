@@ -20,7 +20,7 @@ const SignIn = () => {
             .catch(err => console.log(err.message))
     }
 
-    const handleSignInWithGoogle = e => {
+    const handleSignInWithGoogle = e  => {
         e.preventDefault()
         signInWithGoogle()
     }
