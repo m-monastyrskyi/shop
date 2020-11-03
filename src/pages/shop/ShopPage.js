@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import initialShopData from './shopData'
-import CollectionPreview from '../../components/PreviewCollection'
+import CollectionPreview from '../../components/CollectionPreview'
 
 const ShopPage = () => {
     const [ collections, setCollections ] = useState( initialShopData )
