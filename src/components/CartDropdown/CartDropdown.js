@@ -4,7 +4,7 @@ import CartItem from '../CartItem'
 import './CartDropdown.styles.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleCartHidden } from '../../redux/cart/cart.actions'
-import { selectCartItems } from '../../redux/cart/cart.reducer'
+import { selectCartItems } from '../../redux/cart/cart.selectors'
 
 const CartDropdown = () => {
     const dispatch = useDispatch()

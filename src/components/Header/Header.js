@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux'
 import { selectUser } from '../../redux/user/user.reducer'
 import CartIcon from '../CartIcon'
 import CartDropdown from '../CartDropdown'
-import { selectCartHidden } from '../../redux/cart/cart.reducer'
+import { selectCartHidden } from '../../redux/cart/cart.selectors'
+
 
 
 const Header = () => {
