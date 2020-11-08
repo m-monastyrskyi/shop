@@ -16,6 +16,4 @@ const userReducer = (state = INITIAL_STATE, action) => {
     }
 }
 
-export const selectUser = state => state.user.currentUser
-
 export default userReducer

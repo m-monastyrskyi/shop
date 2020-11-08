@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import CustomButton from '../CustomButton'
 import CartItem from '../CartItem'
 import './CartDropdown.styles.scss'
@@ -9,6 +10,7 @@ import { selectCartItems } from '../../redux/cart/cart.selectors'
 const CartDropdown = () => {
     const dispatch = useDispatch()
     const cartItems = useSelector(selectCartItems)
+    const history = useHistory()
 
     const handleCloseDropdown = e => {
         if ( !document.querySelector('.cart-dropdown').contains(e.target) ) {
@@ -21,14 +23,21 @@ const CartDropdown = () => {
         return () => window.removeEventListener('click', handleCloseDropdown)
     }, [])
 
+    const handleCheckoutClick = () => {
+        dispatch(toggleCartHidden())
+        history.push('/checkout')
+    }
+
     return (
         <div className='cart-dropdown'>
             <div className="cart-items">
                 {
-                    cartItems.map(item => <CartItem key={item.id} item={item}/>)
+                    cartItems.length
+                        ? cartItems.map(item => <CartItem key={item.id} item={item}/>)
+                        : <span className='empty-message'>Your cart is empty</span>
                 }
             </div>
-            <CustomButton>GO TO CHECKOUT</CustomButton>
+            <CustomButton onClick={handleCheckoutClick}>GO TO CHECKOUT</CustomButton>
         </div>
     )
 }
