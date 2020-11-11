@@ -8,24 +8,27 @@ import { selectCurrentUser } from '../../redux/user/user.selectors'
 import { selectCartHidden } from '../../redux/cart/cart.selectors'
 import CartIcon from '../CartIcon'
 import CartDropdown from '../CartDropdown'
-
+import { toast } from 'react-toastify'
 
 const Header = () => {
     const currentUser = useSelector(selectCurrentUser)
     const isCartDropdownHidden = useSelector(selectCartHidden)
+
+    const handleSignOutClick = () => {
+        auth.signOut().then(() => toast.success('Successfully signed out'))
+    }
 
     return (
         <header className="header">
             <Link to="/" className="logo-container">
                 <Logo className="logo"/>
             </Link>
-
             <nav className="options">
                 <Link to="/shop" className="option">SHOP</Link>
                 <Link to="/shop" className="option">CONTACT</Link>
                 {
                     currentUser
-                        ? <a className='option' onClick={() => auth.signOut()}>Sign out</a>
+                        ? <a className='option' onClick={handleSignOutClick}>Sign out</a>
                         : <Link className='option' to="/signin">Sign in</Link>
                 }
                 <CartIcon/>

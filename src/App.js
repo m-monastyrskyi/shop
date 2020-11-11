@@ -15,6 +15,9 @@ import { setCurrentUser } from './redux/user/user.actions'
 import { selectCurrentUser } from './redux/user/user.selectors'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const App = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(selectCurrentUser)
@@ -41,6 +44,15 @@ const App = () => {
 
     return (
         <main>
+            <ToastContainer position="top-center"
+                            autoClose={2000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss={false}
+                            draggable={false}
+                            pauseOnHover={false}/>
             <Header/>
             <Switch>
                 <Route exact path={'/'} component={Homepage}/>

@@ -4,25 +4,42 @@ import CustomButton from '../CustomButton'
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
 
 import './SignIn.style.scss'
+import { toast } from 'react-toastify'
 
 const SignIn = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [loadingGoogle, setLoadingGoogle] = useState(false)
 
     const handleSubmit = e => {
         e.preventDefault()
+        setLoading(true)
 
         auth.signInWithEmailAndPassword(email, password)
             .then(() => {
-                setEmail('')
-                setPassword('')
+                toast.success('Successfully signed in')
             })
-            .catch(err => console.log(err.message))
+            .catch(err => {
+                setLoading(false)
+                console.log(err.message)
+                toast.error(err.message, { autoClose: 4000 })
+            })
     }
 
-    const handleSignInWithGoogle = e  => {
+    const handleSignInWithGoogle = e => {
         e.preventDefault()
+        setLoadingGoogle(true)
+
         signInWithGoogle()
+            .then(() => {
+                setLoadingGoogle(false)
+                toast.success('Successfully signed in')
+            })
+            .catch(err => {
+                setLoadingGoogle(false)
+                toast.error(err.message)
+            })
     }
 
     return (
@@ -47,8 +64,9 @@ const SignIn = () => {
                 />
 
                 <div className="buttons">
-                    <CustomButton type="submit">Sign in</CustomButton>
+                    <CustomButton type="submit" loading={loading}>Sign in</CustomButton>
                     <CustomButton
+                        loading={loadingGoogle}
                         isGoogleSignIn
                         onClick={handleSignInWithGoogle}>
                         Sign in with Google
