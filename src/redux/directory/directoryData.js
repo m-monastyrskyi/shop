@@ -1,4 +1,4 @@
-export const initialSections = [
+export default [
     {
         title: 'hats',
         imageUrl: '/assets/hat.jpg',
