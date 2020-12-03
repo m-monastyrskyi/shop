@@ -1,6 +1,5 @@
 import React from 'react'
-import './Header.styles.scss'
-import { Link } from 'react-router-dom'
+import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink } from './Header.styles'
 import { ReactComponent as Logo } from '../../assets/shoes.svg'
 import { auth } from '../../firebase/firebase.utils'
 import { useSelector } from 'react-redux'
@@ -19,24 +18,24 @@ const Header = () => {
     }
 
     return (
-        <header className="header">
-            <Link to="/" className="logo-container">
+        <HeaderContainer>
+            <LogoContainer to="/">
                 <Logo className="logo"/>
-            </Link>
-            <nav className="options">
-                <Link to="/shop" className="option">SHOP</Link>
-                <Link to="/shop" className="option">CONTACT</Link>
+            </LogoContainer>
+            <OptionsContainer >
+                <OptionLink to="/shop">SHOP</OptionLink>
+                <OptionLink to="/shop">CONTACT</OptionLink>
                 {
                     currentUser
-                        ? <a className='option' onClick={handleSignOutClick}>Sign out</a>
-                        : <Link className='option' to="/signin">Sign in</Link>
+                        ? <OptionLink as='a' onClick={handleSignOutClick}>Sign out</OptionLink>
+                        : <OptionLink to="/signin">Sign in</OptionLink>
                 }
                 <CartIcon/>
-            </nav>
+            </OptionsContainer>
             {
                 !isCartDropdownHidden && <CartDropdown/>
             }
-        </header>
+        </HeaderContainer>
     )
 }
 
