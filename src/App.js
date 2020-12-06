@@ -8,7 +8,7 @@ import ShopPage from './pages/shop'
 import SignInAndSignUp from './pages/signInAndSignUp'
 import Header from './components/Header'
 
-import { auth } from './firebase/firebase.utils'
+import { addCollectionAndDocuments, auth } from './firebase/firebase.utils'
 import { createUserProfileDocument } from './firebase/firebase.utils'
 
 import { setCurrentUser } from './redux/user/user.actions'
@@ -21,6 +21,7 @@ import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(selectCurrentUser)
+    // const collectionForPreview = useSelector(selectCollectionsForPreview)
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async userAuth => {
@@ -37,6 +38,9 @@ const App = () => {
             }
             dispatch(setCurrentUser(userAuth))
         })
+
+        // addCollectionAndDocuments('collections', collectionForPreview.map(({ title, items }) => ({ title, items })))
+
         return () => {
             unsubscribe()
         }
