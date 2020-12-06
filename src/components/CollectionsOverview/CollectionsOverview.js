@@ -6,7 +6,7 @@ import CollectionPreview from '../CollectionPreview'
 
 const CollectionsOverview = () => {
     const collections = useSelector(selectCollectionsForPreview)
-    //console.log(collections)
+
     return (
         <div className='collections-overview'>
             {

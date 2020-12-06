@@ -7,6 +7,7 @@ import { selectCollection } from '../../redux/shop/shop.selectors'
 
 const CollectionPage = ({ match }) => {
     const collection = useSelector(selectCollection(match.params.categoryId))
+
     const { title, items } = collection
 
     return (
