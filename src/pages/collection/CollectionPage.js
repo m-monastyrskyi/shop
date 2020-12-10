@@ -1,15 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import './Collection.styles.scss'
 
 import CollectionItem from '../../components/CollectionItem'
+import { useSelector } from 'react-redux'
 import { selectCollection } from '../../redux/shop/shop.selectors'
-import Spinner from '../../components/Spinner'
 
 const CollectionPage = ({ match }) => {
     const collection = useSelector(selectCollection(match.params.categoryId))
-
-    if (!collection) return <Spinner />
 
     const { title, items } = collection
 

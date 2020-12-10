@@ -6,17 +6,17 @@ import CollectionsOverview from '../../components/CollectionsOverview'
 import CollectionPage from '../collection'
 import Spinner from '../../components/Spinner'
 import { fetchCollectionsStartAsync } from '../../redux/shop/shop.action'
-import { selectIsCollectionFetching } from '../../redux/shop/shop.selectors'
+import { selectIsCollectionsLoaded } from '../../redux/shop/shop.selectors'
 
 const ShopPage = ({ match }) => {
     const dispatch = useDispatch()
-    const isFetching = useSelector(selectIsCollectionFetching)
+    const isCollectionsLoaded = useSelector(selectIsCollectionsLoaded)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(fetchCollectionsStartAsync())
-    },[])
+    }, [])
 
-    return isFetching ? <Spinner/> : (
+    return !isCollectionsLoaded ? <Spinner/> : (
         <div className="shop-page">
             <Route exact path={`${match.path}`} component={CollectionsOverview}/>
             <Route path={`${match.path}/:categoryId`} component={CollectionPage}/>
