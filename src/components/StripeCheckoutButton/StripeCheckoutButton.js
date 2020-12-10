@@ -16,17 +16,19 @@ const StripeCheckoutButton = ({ price }) => {
     }
 
     return (
-        <StripeCheckout
-            label='Pay Now'
-            name='Cool SHOP'
-            billingAddress
-            shippingAddress
-            description={`Your total is $${price}`}
-            amount={priceForStripe}
-            panelLabel='Pay Now'
-            token={onToken}
-            stripeKey={publishableKey}
-        />
+        <div className='checkout-button'>
+            <StripeCheckout
+                label='Pay Now'
+                name='Cool SHOP'
+                billingAddress
+                shippingAddress
+                description={`Your total is $${price}`}
+                amount={priceForStripe}
+                panelLabel='Pay Now'
+                token={onToken}
+                stripeKey={publishableKey}
+            />
+        </div>
     )
 }
 
