@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import FormInput from '../FormInput'
 import CustomButton from '../CustomButton'
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
+import { googleSignInStart } from '../../redux/user/user.actions'
 
 import './SignIn.style.scss'
 import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
 
 const SignIn = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
     const [loadingGoogle, setLoadingGoogle] = useState(false)
+    const dispatch = useDispatch()
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -66,9 +69,10 @@ const SignIn = () => {
                 <div className="buttons">
                     <CustomButton type="submit" loading={loading}>Sign in</CustomButton>
                     <CustomButton
+                        type='button'
                         loading={loadingGoogle}
                         isGoogleSignIn
-                        onClick={handleSignInWithGoogle}>
+                        onClick={() => dispatch(googleSignInStart())}>
                         Sign in with Google
                     </CustomButton>
                 </div>

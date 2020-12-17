@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import CollectionsOverview from '../../components/CollectionsOverview'
 import CollectionPage from '../collection'
 import Spinner from '../../components/Spinner'
-import { fetchCollectionsStartAsync } from '../../redux/shop/shop.action'
+import { fetchCollectionsStart } from '../../redux/shop/shop.action'
 import { selectIsCollectionsLoaded } from '../../redux/shop/shop.selectors'
 
 const ShopPage = ({ match }) => {
@@ -13,7 +13,7 @@ const ShopPage = ({ match }) => {
     const isCollectionsLoaded = useSelector(selectIsCollectionsLoaded)
 
     useEffect(() => {
-        dispatch(fetchCollectionsStartAsync())
+        dispatch(fetchCollectionsStart())
     }, [])
 
     return !isCollectionsLoaded ? <Spinner/> : (
