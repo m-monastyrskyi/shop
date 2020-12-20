@@ -7,41 +7,20 @@ import CheckoutPage from './pages/checkout'
 import ShopPage from './pages/shop'
 import SignInAndSignUp from './pages/signInAndSignUp'
 import Header from './components/Header'
-
-import { auth } from './firebase/firebase.utils'
-import { createUserProfileDocument } from './firebase/firebase.utils'
-
-import { setCurrentUser } from './redux/user/user.actions'
 import { selectCurrentUser } from './redux/user/user.selectors'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { checkUserSession } from './redux/user/user.actions'
 
 const App = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(selectCurrentUser)
 
-    // useEffect(() => {
-    //     const unsubscribe = auth.onAuthStateChanged(async userAuth => {
-    //         if ( userAuth ) {
-    //             const userRef = await createUserProfileDocument(userAuth)
-    //
-    //             userRef.onSnapshot(snapshot => {
-    //                 dispatch(setCurrentUser({
-    //                     id: snapshot.id,
-    //                     ...snapshot.data()
-    //                 }))
-    //             })
-    //
-    //         }
-    //         dispatch(setCurrentUser(userAuth))
-    //     })
-    //
-    //     return () => {
-    //         unsubscribe()
-    //     }
-    // }, [])
+    useEffect(() => {
+        dispatch(checkUserSession())
+    }, [])
 
     return (
         <main>
